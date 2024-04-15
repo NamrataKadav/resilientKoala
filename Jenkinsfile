@@ -13,7 +13,7 @@ pipeline {
                 echo 'Authentication with Salesforce Finished!'
                 }
             }
-        }
+        
 
         stage('Validate Deployment') {
             steps {
@@ -26,7 +26,7 @@ pipeline {
                 echo 'Manual deployment successful!'
             }
         }
-    }
+    
 
     post {
         always {
