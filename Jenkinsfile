@@ -2,29 +2,10 @@ pipeline {
     agent any 
 
     stages {
-        stage('Checkout') {
+        stage("List env variables") {
             steps {
-                checkout scm
+                sh "printenv | sort"
             }
-        }
-
-        stage('Authenticate with Salesforce') {
-            steps {
-                echo 'Authentication with Salesforce Finished!'
-                }
-            }
-        
-
-        stage('Validate Deployment') {
-            steps {
-                echo 'Validated deployment successfully!'
-            }
-        }
-
-        stage('Manual Deployment') {
-            steps {
-                echo 'Manual deployment successful!'
-            }
-        }
+        }   
     }
 }    
