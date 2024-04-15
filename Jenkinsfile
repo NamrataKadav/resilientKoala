@@ -26,12 +26,5 @@ pipeline {
                 echo 'Manual deployment successful!'
             }
         }
-    
-
-    post {
-        always {
-            echo 'Pipeline Execution Finished!'
-        }
     }
-}
 }    
