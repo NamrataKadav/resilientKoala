@@ -22,8 +22,9 @@ node {
             echo "${toolbelt}/sf org login jwt --instance-url ${instanceUrl} --client-id ${CONSUMER} --username ${USERNAME} --jwt-key-file ${server_key_file} --set-default-dev-hub --alias HubOrg"
         }
         stage('Authorize DevHub') {
-            dir('C:\ProgramData\Jenkins\.jenkins\tools\com.cloudbees.jenkins.plugins.customtools.CustomTool\SalesforceCLI\sf\bin')
-            bat "sf org login jwt --instance-url ${instanceUrl} --client-id ${CONSUMER} --username ${USERNAME} --jwt-key-file ${server_key_file} --set-default-dev-hub --alias HubOrg"
+            dir('C:\ProgramData\Jenkins\.jenkins\tools\com.cloudbees.jenkins.plugins.customtools.CustomTool\SalesforceCLI\sf\bin'){
+               bat "sf org login jwt --instance-url ${instanceUrl} --client-id ${CONSUMER} --username ${USERNAME} --jwt-key-file ${server_key_file} --set-default-dev-hub --alias HubOrg"
+            }
             }
     }
 }
