@@ -18,6 +18,9 @@ node {
     // -------------------------------------------------------------------------
 
     stage('checkout source code') {
+        withCredentials([string(credentialsId: 'SF_CONSUMER_KEY', variable: 'CONSUMER')]) {
+           echo "SFCONSUMER: ${CONSUMER} And $CONSUMER"
+        }
         echo "Hello Namrata"
         echo "SF_CONSUMER_KEY: ${SF_CONSUMER_KEY}"
     }
