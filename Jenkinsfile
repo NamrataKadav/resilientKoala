@@ -12,11 +12,19 @@ node {
 
     def toolbelt = tool 'SalesforceCLI'
     
-    withCredentials([string(credentialsId: 'SF_CONSUMER_KEY', variable: 'CONSUMER'),string(credentialsId: 'SF_USERNAME', variable: 'USERNAME')]) {
+    withCredentials([string(credentialsId: 'SF_CONSUMER_KEY', variable: 'CONSUMER'),string(credentialsId: 'SF_USERNAME', variable: 'USERNAME'),string(credentialsId: 'SERVER_KEY_CREDENTALS_ID', variable: 'server_key_file'),string(credentialsId: 'SF_INSTANCE_URL', variable: 'instanceUrl')]) {
         stage('checkout source code') {
+            checkout scm
             echo "SFCONSUMER: ${CONSUMER} And $CONSUMER"
             echo "Username: ${USERNAME}"
             echo "Hello Namrata"
         }
+        stage('Authorize DevHub') {
+                rc = command "${toolbelt}/sf org login jwt --instance-url ${instanceUrl} --client-id ${CONSUMER} --username ${USERNAME} --jwt-key-file ${server_key_file} --set-default-dev-hub --alias HubOrg"
+                if (rc != 0) {
+                    error 'Salesforce dev hub org authorization failed.'
+                }
+            }
+        echo "toolbelt: ${toolbelt}"
     }
 }
