@@ -19,6 +19,7 @@ node {
             echo "Username: ${USERNAME}"
             echo "Hello Namrata"
             echo "toolbelt: ${toolbelt}"
+            echo "${toolbelt}/sf org login jwt --instance-url ${instanceUrl} --client-id ${CONSUMER} --username ${USERNAME} --jwt-key-file ${server_key_file} --set-default-dev-hub --alias HubOrg"
         }
         stage('Authorize DevHub') {
                 rc = command "${toolbelt}/sf org login jwt --instance-url ${instanceUrl} --client-id ${CONSUMER} --username ${USERNAME} --jwt-key-file ${server_key_file} --set-default-dev-hub --alias HubOrg"
