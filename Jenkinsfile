@@ -5,8 +5,6 @@ pipeline {
         SF_USERNAME = credentials('SF_USERNAME')
         SF_CONSUMER_KEY = credentials('SF_CONSUMER_KEY')
         TEST_LEVEL='RunLocalTests'
-        CURR = pwd()
-        // SCRATCH_ORG_PATH= CURR+'config/project-scratch-def.json'
         toolbelt = tool 'SalesforceCLI'
     }
      stages{
@@ -29,6 +27,9 @@ pipeline {
           stage('Create Scratch org'){
               steps{
                   withEnv(["HOME=${env.WORKSPACE}"]) {
+                      script{
+                          CURR = pwd()+'config/project-scratch-def.json'
+                      }
                       echo "SCRATCH_ORG_PATH: ${CURR}"
                       dir('C:/ProgramData/Jenkins/.jenkins/tools/com.cloudbees.jenkins.plugins.customtools.CustomTool/SalesforceCLI/sf/bin'){
                          // bat "sf org create scratch --target-dev-hub HubOrg --set-default --definition-file config/project-scratch-def.json --alias ciorg --wait 10 --duration-days 1"
