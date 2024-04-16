@@ -25,6 +25,6 @@ node {
            echo "SFCONSUMER: ${CONSUMER} And $CONSUMER"
         }
         echo "Hello Namrata"
-        echo "SF_CONSUMER_KEY: ${CONSUMER_KEY}"
+        echo "SF_CONSUMER_KEY: $CONSUMER_KEY"
     }
 }
