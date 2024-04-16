@@ -11,20 +11,12 @@ node {
     def TEST_LEVEL='RunLocalTests'
 
     def toolbelt = tool 'SalesforceCLI'
-    environment{
-        CONSUMER_KEY = credentials('SF_CONSUMER_KEY')
-    }
-
-
-    // -------------------------------------------------------------------------
-    // Check out code from source control.
-    // -------------------------------------------------------------------------
-
-    stage('checkout source code') {
-        withCredentials([string(credentialsId: 'SF_CONSUMER_KEY', variable: 'CONSUMER')]) {
-           echo "SFCONSUMER: ${CONSUMER} And $CONSUMER"
+    
+    withCredentials([string(credentialsId: 'SF_CONSUMER_KEY', variable: 'CONSUMER'),string(credentialsId: 'SF_USERNAME', variable: 'USERNAME')]) {
+        stage('checkout source code') {
+            echo "SFCONSUMER: ${CONSUMER} And $CONSUMER"
+            echo "Username: ${USERNAME}"
+            echo "Hello Namrata"
         }
-        echo "Hello Namrata"
-        echo "SF_CONSUMER_KEY: $CONSUMER_KEY"
     }
 }
