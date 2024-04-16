@@ -18,12 +18,21 @@ pipeline {
                 withEnv(["HOME=${env.WORKSPACE}"]) {
                     withCredentials([file(credentialsId: 'Server_Key_File', variable: 'serverKeyFile')]) {
                        dir('C:/ProgramData/Jenkins/.jenkins/tools/com.cloudbees.jenkins.plugins.customtools.CustomTool/SalesforceCLI/sf/bin'){
-                         echo "Instance URL: $SF_INSTANCE_URL"
                          bat "sf org login jwt --client-id ${SF_CONSUMER_KEY} --username ${SF_USERNAME} --jwt-key-file ${serverKeyFile} --set-default-dev-hub --alias HubOrg"
                        }
                     }
                 }
               }
-            }  
+            }
+          stage('Create Scratch org'){
+              steps{
+                  withEnv(["HOME=${env.WORKSPACE}"]) {
+                      dir('C:/ProgramData/Jenkins/.jenkins/tools/com.cloudbees.jenkins.plugins.customtools.CustomTool/SalesforceCLI/sf/bin'){
+                         bat "sf org create scratch --target-dev-hub HubOrg --set-default --definition-file config/project-scratch-def.json --alias ciorg --wait 10 --duration-days 1"
+                       }
+                  }
+              }
+          }
+         
         }
 }
