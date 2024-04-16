@@ -11,7 +11,7 @@ node {
     def TEST_LEVEL='RunLocalTests'
 
     def toolbelt = tool 'SalesforceCLI'
-    envrionment{
+    environment{
         CONSUMER_KEY = credentials('SF_CONSUMER_KEY')
     }
 
