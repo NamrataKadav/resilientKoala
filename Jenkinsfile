@@ -37,6 +37,15 @@ pipeline {
                   }
               }
           }
+         stage('Deploy to scratch org'){
+             steps{
+                 withEnv(["HOME=${env.WORKSPACE}"]) {
+                     dir('C:/ProgramData/Jenkins/.jenkins/tools/com.cloudbees.jenkins.plugins.customtools.CustomTool/SalesforceCLI/sf/bin'){
+                         bat "sf project deploy start --target-org ciorg"
+                       }
+                 }
+             }
+         }
          
         }
 }
