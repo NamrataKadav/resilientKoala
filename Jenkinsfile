@@ -11,6 +11,9 @@ node {
     def TEST_LEVEL='RunLocalTests'
 
     def toolbelt = tool 'SalesforceCLI'
+    envrionment{
+        CONSUMER_KEY = credentials('SF_CONSUMER_KEY')
+    }
 
 
     // -------------------------------------------------------------------------
@@ -22,6 +25,6 @@ node {
            echo "SFCONSUMER: ${CONSUMER} And $CONSUMER"
         }
         echo "Hello Namrata"
-        echo "SF_CONSUMER_KEY: ${SF_CONSUMER_KEY}"
+        echo "SF_CONSUMER_KEY: ${CONSUMER_KEY}"
     }
 }
