@@ -4,7 +4,6 @@ pipeline {
         SF_INSTANCE_URL = credentials('SF_INSTANCE_URL')
         SF_USERNAME = credentials('SF_USERNAME')
         SF_CONSUMER_KEY = credentials('SF_CONSUMER_KEY')
-        SF_SERVER_KEY = credentials('SF_SERVER_KEY')
         TEST_LEVEL='RunLocalTests'
         toolbelt = tool 'SalesforceCLI'
     }
