@@ -28,7 +28,7 @@ pipeline {
               steps{
                   withEnv(["HOME=${env.WORKSPACE}"]) {
                       script{
-                          SCRATCH_ORG_FILE = pwd()+'\config\project-scratch-def.json'
+                          SCRATCH_ORG_FILE = pwd()+'\\config\\project-scratch-def.json'
                       }
                       echo "SCRATCH_ORG_PATH: ${CURR}"
                       dir('C:/ProgramData/Jenkins/.jenkins/tools/com.cloudbees.jenkins.plugins.customtools.CustomTool/SalesforceCLI/sf/bin'){
