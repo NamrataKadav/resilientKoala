@@ -5,7 +5,8 @@ pipeline {
         SF_USERNAME = credentials('SF_USERNAME')
         SF_CONSUMER_KEY = credentials('SF_CONSUMER_KEY')
         TEST_LEVEL='RunLocalTests'
-        SCRATCH_ORG_PATH = pwd()+'config/project-scratch-def.json'
+        CURR = pwd()
+        SCRATCH_ORG_PATH= CURR+'config/project-scratch-def.json'
         toolbelt = tool 'SalesforceCLI'
     }
      stages{
