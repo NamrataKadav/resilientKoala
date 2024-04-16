@@ -14,7 +14,7 @@ pipeline {
             checkout scm
         }
         stage('Authorize DevHub') {
-            dir('C:\ProgramData\Jenkins\.jenkins\tools\com.cloudbees.jenkins.plugins.customtools.CustomTool\SalesforceCLI\sf\bin'){
+            dir('C:/ProgramData/Jenkins/.jenkins/tools/com.cloudbees.jenkins.plugins.customtools.CustomTool/SalesforceCLI/sf/bin'){
                bat "sf org login jwt --instance-url ${SF_INSTANCE_URL} --client-id ${SF_CONSUMER_KEY} --username ${SF_USERNAME} --jwt-key-file ${serverKeyFile} --set-default-dev-hub --alias HubOrg"
             }
             }
