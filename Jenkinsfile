@@ -32,7 +32,7 @@ pipeline {
                       }
                       echo "SCRATCH_ORG_PATH: ${SCRATCH_ORG_FILE}"
                       dir('C:/ProgramData/Jenkins/.jenkins/tools/com.cloudbees.jenkins.plugins.customtools.CustomTool/SalesforceCLI/sf/bin'){
-                         bat "sf org create scratch --target-dev-hub HubOrg --set-default --definition-file ${SCRATCH_ORG_FILE} --alias ciorg --wait 10 --duration-days 1"
+                         bat "sf org create scratch --target-dev-hub HubOrg --set-default --definition-file ${SCRATCH_ORG_FILE} --alias ciorg --duration-days 1"
                        }
                   }
               }
