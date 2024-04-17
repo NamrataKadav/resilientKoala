@@ -33,7 +33,9 @@ pipeline {
                       echo "SCRATCH_ORG_PATH: ${SCRATCH_ORG_FILE}"
                       dir('C:/ProgramData/Jenkins/.jenkins/tools/com.cloudbees.jenkins.plugins.customtools.CustomTool/SalesforceCLI/sf/bin'){
                           catchError{
-                             bat "sf org create scratch --target-dev-hub HubOrg --set-default --definition-file ${SCRATCH_ORG_FILE} --alias ciorg --duration-days 1" 
+                             bat "sf org create scratch --target-dev-hub HubOrg --set-default --definition-file ${SCRATCH_ORG_FILE} --alias ciorg --duration-days 1"
+                             bat "sf org list"
+                             bat "sfdx force:data:soql:query --query='SELECT Id, Name, OrgName, CreatedDate, Description, ScratchOrg, SignupUsername FROM ActiveScratchOrg' -o ${SF_USERNAME}" 
                           }
                          }
                   }
