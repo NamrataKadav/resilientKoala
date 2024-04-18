@@ -24,6 +24,7 @@ pipeline {
                 }
               }
             }
+         /*
           stage('Create Scratch org'){
               steps{
                   script{
@@ -49,13 +50,14 @@ pipeline {
                   }
               }
           }
+          */
          stage('Deploy to scratch org'){
              steps{
                  withEnv(["HOME=${env.WORKSPACE}"]) {
                      dir('C:/ProgramData/Jenkins/.jenkins/tools/com.cloudbees.jenkins.plugins.customtools.CustomTool/SalesforceCLI/sf/bin'){
-                         bat "sf org list --json --all"
-                         bat "sfdx force:data:soql:query --query='SELECT Id, Name, OrgName, CreatedDate, Description, ScratchOrg, SignupUsername FROM ActiveScratchOrg' -o ${SF_USERNAME}" 
-                         bat "sf project deploy start --target-org ciorg"
+                        // bat "sf org list --json --all"
+                       //  bat "sfdx force:data:soql:query --query='SELECT Id, Name, OrgName, CreatedDate, Description, ScratchOrg, SignupUsername FROM ActiveScratchOrg' -o ${SF_USERNAME}" 
+                         bat "sf project deploy start --target-org HubOrg"
                        }
                  }
              }
