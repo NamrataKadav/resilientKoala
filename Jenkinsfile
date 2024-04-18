@@ -40,7 +40,7 @@ pipeline {
                       echo "SCRATCH_ORG_PATH: ${SCRATCH_ORG_FILE}"
                       dir('C:/ProgramData/Jenkins/.jenkins/tools/com.cloudbees.jenkins.plugins.customtools.CustomTool/SalesforceCLI/sf/bin'){
                           script{
-                              CURR_DIR_IN_PATH = pwd()
+                              CURR_DIR_IN_PATH = pwd()+'\\force-app\\main\\default\\classes'
                           }
                           echo "curr dir in specifies sf path: ${CURR_DIR_IN_PATH}"
                           catchError{
