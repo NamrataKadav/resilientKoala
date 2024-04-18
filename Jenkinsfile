@@ -55,7 +55,7 @@ pipeline {
              steps{
                  withEnv(["HOME=${env.WORKSPACE}"]) {
                      script{
-                         PROJECT_DIR = pwd()+'\\force-app'
+                         PROJECT_DIR = pwd()
                      }
                      dir('C:/ProgramData/Jenkins/.jenkins/tools/com.cloudbees.jenkins.plugins.customtools.CustomTool/SalesforceCLI/sf/bin'){
                         // bat "sf org list --json --all"
