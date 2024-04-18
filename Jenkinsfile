@@ -26,12 +26,22 @@ pipeline {
             }
           stage('Create Scratch org'){
               steps{
+                  script{
+                      CURR_DIR = pwd()
+                  }
+                  echo "curr dir out of home: ${CURR_DIR}"
                   withEnv(["HOME=${env.WORKSPACE}"]) {
                       script{
                           SCRATCH_ORG_FILE = pwd()+'\\config\\project-scratch-def.json'
+                          CURR_DIR_IN = pwd()
                       }
+                      echo "curr dir in home: ${CURR_DIR_IN}"
                       echo "SCRATCH_ORG_PATH: ${SCRATCH_ORG_FILE}"
                       dir('C:/ProgramData/Jenkins/.jenkins/tools/com.cloudbees.jenkins.plugins.customtools.CustomTool/SalesforceCLI/sf/bin'){
+                          script{
+                              CURR_DIR_IN_PATH = pwd()
+                          }
+                          echo "curr dir in specifies sf path: ${CURR_DIR_IN_PATH}"
                           catchError{
                              bat "sf org create scratch --target-dev-hub HubOrg --set-default --definition-file ${SCRATCH_ORG_FILE} --alias ciorg --duration-days 1"
                              }
