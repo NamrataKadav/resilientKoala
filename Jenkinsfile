@@ -40,7 +40,7 @@ pipeline {
                       echo "SCRATCH_ORG_PATH: ${SCRATCH_ORG_FILE}"
                       dir('C:/ProgramData/Jenkins/.jenkins/tools/com.cloudbees.jenkins.plugins.customtools.CustomTool/SalesforceCLI/sf/bin'){
                           script{
-                              CURR_DIR_IN_PATH = pwd()+'\\force-app\\main\\default\\classes'
+                              CURR_DIR_IN_PATH = pwd()
                           }
                           echo "curr dir in specifies sf path: ${CURR_DIR_IN_PATH}"
                           catchError{
@@ -55,7 +55,7 @@ pipeline {
              steps{
                  withEnv(["HOME=${env.WORKSPACE}"]) {
                      script{
-                         PROJECT_DIR = pwd()
+                         PROJECT_DIR = pwd()+'\\force-app\\main\\default\\classes'
                      }
                      dir('C:/ProgramData/Jenkins/.jenkins/tools/com.cloudbees.jenkins.plugins.customtools.CustomTool/SalesforceCLI/sf/bin'){
                         // bat "sf org list --json --all"
