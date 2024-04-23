@@ -9,7 +9,8 @@ pipeline {
     stages {
         stage('Example') {
             steps {
-                sh '''${SF_TOOL}/sf/bin/sf --version'''
+                echo '${SF_TOOL}'
+                // sh '''${SF_TOOL}/sf/bin/sf --version'''
             }
         }
     }
