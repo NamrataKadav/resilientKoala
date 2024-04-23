@@ -14,7 +14,7 @@ pipeline {
         stage('Example') {
             steps {
                 tool name: 'sfcli', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool'
-                bat 'sf/bin/sf --version'
+                bat 'sf --version'
             }
         }
     }
