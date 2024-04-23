@@ -3,9 +3,9 @@ pipeline {
     tools{
         com.cloudbees.jenkins.plugins.customtools.CustomTool "sfcli"
     }
-    environment{
-        SF_TOOL = tool  name:'sfcli', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool' 
-    }
+    // environment{
+    //     SF_TOOL = tool  name:'sfcli', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool' 
+    // }
     // tools{
     //  name:'sfcli', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool'   
     // }
