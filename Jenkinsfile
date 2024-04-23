@@ -1,6 +1,8 @@
 pipeline {
     agent any
-    tools('SalesforceCLI')
+    tools{
+       salesforceCLITool 'SalesforceCLI'
+    }
     stages {
         stage('Example') {
             steps {
