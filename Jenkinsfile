@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools{
-       salesforceCLITool 'SalesforceCLI'
+       com.cloudbees.jenkins.plugins.customtools.CustomTool 'SalesforceCLI'
     }
     stages {
         stage('Example') {
