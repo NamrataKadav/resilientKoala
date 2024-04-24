@@ -1,20 +1,20 @@
 pipeline {
     agent any
-    
-    // tools{
-    //     com.cloudbees.jenkins.plugins.customtools.CustomTool "sfcli"
-    // }
-    // environment{
-    //     SF_TOOL = tool  name:'sfcli', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool' 
-    // }
-    // tools{
-    //  name:'sfcli', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool'   
-    // }
+
     stages {
-        stage('Example') {
+        stage('Build') {
             steps {
-                tool name: 'sfcli', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool'
-                bat 'sf --version'
+                echo 'Building.'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
             }
         }
     }
