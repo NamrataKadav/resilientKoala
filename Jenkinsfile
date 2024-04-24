@@ -1,21 +1,11 @@
-pipeline {
-    agent any
-
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Building.'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
+node{
+    stage('Checkout source code'){
+        checkout scm
     }
+    
+    stage('running script'){
+        echo 'testing sf'
+        bat 'sf --version'
+    }
+    
 }
